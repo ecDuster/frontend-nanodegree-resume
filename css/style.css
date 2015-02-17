@@ -46,6 +46,10 @@ h2, h4, h5 {
     padding: 15px 5%;
 }
 
+button {
+    padding: 2px;
+    margin: 3px;
+}
 
 .date-text {
     font-style: italic;
@@ -113,7 +117,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-    background: #484848 url("header-background1.jpg") repeat-y center top;
+    background: #484848 url("../images/header-background1.jpg") repeat-y center top;
 }
 
 .flex-box {
@@ -123,6 +127,15 @@ a {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 10px;
+}
+
+.flex-list {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px 0;
 }
 
 .center-content {

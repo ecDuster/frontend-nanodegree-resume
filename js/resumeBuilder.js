@@ -51,6 +51,20 @@ var bio = {
 
         $("#footerContacts").prepend(formattedMob);
 
+        var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
+        $("#header").append(formattedPic);
+
+        var formattedListStart = HTMLskillsStart.replace("box", "list");
+        $("#header").append(formattedWelMsg);
+
+        if (bio.skills.length > 0) {
+            $("#header").append(formattedListStart);
+
+            for (skill in bio.skills) {
+                var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+                $("#skills").prepend(formattedSkill);
+            }
+        }
         $("#header").append(usaButton);
 
         $("#header").append(internationalizeButton);
