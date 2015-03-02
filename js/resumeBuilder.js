@@ -2,12 +2,12 @@
 var bio = {
     "name" : "Erin Mulligan",
     "role" : "Web Developer Guru",
-    "contact" : {
+    "contacts" : {
         "mobile" : "+852-1111-1234",
         "github" : "emulliganator",
         "email" : "mullig.erin@myemail.com",
         "twitter" : "@mulliganec",
-        "location" : "Hong Kong"
+        "location" : "Mid-Levels, Hong Kong"
     },
     "WelcomeMsg" : "Learn about how I can help you.",
     "skills" : [
@@ -24,18 +24,18 @@ var bio = {
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
         $("#header").prepend(formattedName);
 
-        var formattedMob = HTMLmobile.replace("%data%", bio.contact.mobile);
+        var formattedMob = HTMLmobile.replace("%data%", bio.contacts.mobile);
 
-        var formattedLoc = HTMLlocation.replace("%data%", bio.contact.location);
+        var formattedLoc = HTMLlocation.replace("%data%", bio.contacts.location);
         $("#topContacts").prepend(formattedLoc);
 
-        var formattedTwit = HTMLtwitter.replace("%data%", bio.contact.twitter);
+        var formattedTwit = HTMLtwitter.replace("%data%", bio.contacts.twitter);
         $("#topContacts").prepend(formattedTwit);
 
-        var formattedGithub = HTMLgithub.replace("%data%", bio.contact.github);
+        var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
         $("#topContacts").prepend(formattedGithub);
 
-        var formattedEmail = HTMLemail.replace("%data%", bio.contact.email);
+        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
         $("#topContacts").prepend(formattedEmail);
 
         var formattedWelMsg = HTMLWelcomeMsg.replace("%data%", bio.WelcomeMsg);
@@ -60,17 +60,18 @@ var bio = {
         if (bio.skills.length > 0) {
             $("#header").append(formattedListStart);
 
-            for (skill in bio.skills) {
+            for (var skill in bio.skills) {
                 var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
                 $("#skills").prepend(formattedSkill);
             }
         }
-        $("#header").append(usaButton);
+        $("#header").append(buttonContainer);
 
-        $("#header").append(internationalizeButton);
+        $(".button-box").append(usaButton);
+
+        $(".button-box").append(internationalizeButton);
     }
 };
-
 
 //WORK OBJECT GROUP
 var work = {
@@ -79,7 +80,7 @@ var work = {
             "employer" : "Wine Shop Asia Co. Ltd.",
             "url" : "http://www.wineshopasia.com",
             "title" : "E-Commerce Manager",
-            "location" : "Wan Chai, Hong Kong",
+            "location" : "200 Gloucester Road, Wan Chai, Hong Kong",
             "dates" : "October 2012 - October 2014",
             "description" : "Here is where I discuss the great things I learned and did while working as a manager in the Relm of E-Commerce. The Almost imposible challenges I over came, quests I completed, Wine I defeated. Though I wont, You'll just have to meet me in person for the great details!"
 
@@ -89,14 +90,14 @@ var work = {
 
             "url" : "http://www.ahediting.com",
             "title" : "Workflow Manager",
-            "location" : "Wan Chai, Hong Kong",
+            "location" : "99 Hennessy Road, Wan Chai, Hong Kong",
             "dates" : "October 2014 - Current",
             "description" : "Here is where I plagiarize my previous text out of lazyness, and also forget to remove the obvious repeated starting sentence. Here is where I discuss the great things I learned and did while working as a manager in the Relm of Academic Editing. The Almost imposible challenges I over came, quests I completed, Papers I defeated. Though I wont, You'll just have to meet me in person for the great details!"
         }
     ],
     "display" : function() {
         if (work.jobs.length > 0) {
-            for (job in work.jobs) {
+            for (var job in work.jobs) {
                 $("#workExperience").append(HTMLworkStart);
 
                 var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("#", work.jobs[job].url);
@@ -117,7 +118,6 @@ var work = {
     }
 };
 
-
 //PROJECTS OBJECT GROUP
 var projects = {
     "projects" : [
@@ -129,22 +129,22 @@ var projects = {
                 "images/197x148Proj1.jpg",
                 "images/197x148.gif"
             ],
-            "url" : "http://www.bing.com"
+            "url" : "http://www.udacity.com"
         },
         {
             "title" : "Front End Web Developer Project 2",
             "dates" : "Feb 2015",
             "description" : "Here is where I discuss the great things I learned and did while working as a manager in the Relm of Javascript & JQuery Programing. The Almost imposible challenges I over came, quests I completed, Syntax I defeated. The great number of times my mind exploded (Anyone could guess this... too many). Though I wont, You'll just have to meet me in person for the great details!",
             "images" : [
-                "images/197x148.gif",
-                "images/197x148.gif"
+                "images/197x148-Coding-Proj-2.jpg",
+                "images/197x148-Webpage-Proj2.jpg"
             ],
             "url" : "http://www.udacity.com"
         }
     ],
     "display" : function() {
         if (projects.projects.length > 0) {
-            for (project in projects.projects) {
+            for (var project in projects.projects) {
                 $("#projects").append(HTMLprojectStart);
 
                 var formattedProjTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title).replace("#", projects.projects[project].url);
@@ -157,7 +157,7 @@ var projects = {
                 $(".project-entry:last").append(formattedProjDescript);
 
                 if (projects.projects[project].images.length > 0) {
-                    for (image in projects.projects[project].images) {
+                    for (var image in projects.projects[project].images) {
                         var formattedProjImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
                         $(".project-entry:last").append(formattedProjImage);
                     }
@@ -166,7 +166,6 @@ var projects = {
         }
     }
 };
-
 
 //EDUCATION OBJECT GROUP
 var education = {
@@ -198,7 +197,7 @@ var education = {
     ],
     "display" : function() {
         if (education.schools.length > 0) {
-            for (school in education.schools) {
+            for (var school in education.schools) {
                 $("#education").append(HTMLschoolStart);
 
                 var formattedSchoolFullTitle = HTMLschoolName.replace("%data%", education.schools[school].name).replace("#", education.schools[school].url) + HTMLschoolDegree.replace("%data%", education.schools[school].degree);
@@ -218,23 +217,19 @@ var education = {
         if (education.onlineCourses.length > 0) {
             $(".education-entry:last").append(HTMLonlineClasses);
 
-            for (online in education.onlineCourses) {
-                var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[online].title).replace("#", education.onlineCourses[online].url) + HTMLonlineTitle.replace("%data%", education.onlineCourses[online].school);
+            for (var online in education.onlineCourses) {
+                var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[online].title).replace("#", education.onlineCourses[online].url) + HTMLonlineSchool.replace("%data%", education.onlineCourses[online].school);
                 $(".education-entry:last").append(formattedOnlineTitle);
 
                 var formattedOnlineDate = HTMLonlineDates.replace("%data%", education.onlineCourses[online].date);
                 $(".education-entry:last").append(formattedOnlineDate);
 
-                var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[online].url);
+                var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[online].url).replace("#", education.onlineCourses[online].url);
                 $(".education-entry:last").append(formattedOnlineURL);
             }
         }
     }
 };
-
-
-/* HEADER INFO */
-bio.display();
 
 
 /* International and USA Name Standards Button Functions */
@@ -253,14 +248,14 @@ function usName() {
     return bio.name;
 }
 
+/* HEADER INFO */
+bio.display();
 
 /* WORK EXPERIENCE */
 work.display();
 
-
 /* PROJECTS */
 projects.display();
-
 
 /* EDUCATION */
 education.display();
@@ -268,12 +263,3 @@ education.display();
 
 /* THE MAP */
 $("#mapDiv").append(googleMap);
-
-
-//FUNCTION THAT LOGS CLICKS ON THE PAGE
-$(document).click(function(loc) {
-    var x = loc.pageX;
-    var y = loc.pageY;
-
-    logClicks(x,y);
-});
